@@ -15,7 +15,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    Так и что же там на улицах?
+                    Так и что же там на улицах?____________________________А в других городах?
                 </h1>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-7 is-4">
+                <div class="column is-offset-2 is-8">
                     <form method="POST">
                         <div class="field has-addons">
                             <div class="control is-expanded">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="control">
                                 <button class="button is-info">
-                                    Add City
+                                    Добавить город
                                 </button>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-7 is-4">
+                <div class="column is-offset-2 is-8">
                     {% for weather in weather_data %}
                     <div class="box">
                         <article class="media">
@@ -75,6 +75,11 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="media-right">
+                                <a href="{{url_for('delete_city', name=weather.city) }}">
+                                    <button class="delete"></button>
+                                </a>
+                            </div>
                         </article>
                     </div>
                     {% endfor %}
@@ -83,6 +88,7 @@
         </div>
     </section>
     <footer class="footer">
+        <h1>разработал так себе программист: theycallmesalute</h1>
     </footer>
 </body>
 

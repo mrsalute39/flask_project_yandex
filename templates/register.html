@@ -11,7 +11,16 @@
 </head>
 
 <body>
-    <h1>Регистрация</h1>
+<section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Регистрация
+                </h1>
+            </div>
+        </div>
+    </section>
+
 
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -21,6 +30,9 @@
     </form>
 
     <a href="{{ url_for('login') }}">Уже есть аккаунт? Войти здесь.</a>
+    <footer class="footer">
+        <h1>разработал так себе программист: theycallmesalute</h1>
+    </footer>
 </body>
 
 </html>

@@ -111,7 +111,7 @@ def dashboard():
     return render_template('dashboard.html', weather_data=weather_data)
 
 
-@app.route("/dashboard/add_city", methods=["POST", "GET"])
+@app.route("/dashboard/add_city/<some_city_name>", methods=["POST", "GET"])
 @login_required
 def add_city(some_city_name):
     err_msg = ''
@@ -126,7 +126,7 @@ def add_city(some_city_name):
         else:
             user_cities = []
 
-        if new_city not in user_cities:
+        if new_city.capitalize() not in user_cities:
             new_city_data = get_weather_data(new_city)
 
             if new_city_data['cod'] == 200:
@@ -145,7 +145,8 @@ def add_city(some_city_name):
         flash(err_msg, 'error')
     else:
         flash("Город успешно добавлен, обновите страницу!")
-        return redirect(url_for("dashboard"))
+    db.session.commit()
+    return redirect(url_for("dashboard"))
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -176,5 +177,23 @@ def get_weather_data(city):
     return r
 
 
+@app.route("/dashboard/delete_city/<name>")
+def delete_city(name):
+    user = User.query.filter_by(username=current_user_name).first()
+
+    cities = eval(user.saved_cities)
+    cities.remove(name)
+
+    if len(cities) == 0:
+        user.saved_cities = None
+    else:
+        user.saved_cities = f'["{'", "'.join(cities)}"]'
+
+    db.session.commit()
+
+    flash(f'Город {name} удален успешно!', 'success')
+    return redirect(url_for('dashboard'))
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

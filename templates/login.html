@@ -17,19 +17,23 @@
                 <h1 class="title">
                     Вход в систему
                 </h1>
+                <h6>Совет: если при вводе данных ничего не происходит, значит вы неправильно вводите данные :)</h6>
             </div>
         </div>
     </section>
-    <form class="box">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             {{ form.username }}
             {{ form.password }}
             {{ form.submit }}
         </form>
-    </form>
+
+
 
     <a class="button" href="{{ url_for('register') }}">Нет аккаунта? Зарегестрируйся здесь</a>
+<footer class="footer">
+        <h1>разработал так себе программист: theycallmesalute</h1>
+    </footer>
 </body>
 
 </html>
