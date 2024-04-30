@@ -2,10 +2,11 @@
 <html lang="ru">
 
 <head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>What's the weather like?</title>
+    <title>Что же там на улице?</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 </head>
 
@@ -14,19 +15,20 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    What's the weather like?
+                    Так и что же там на улицах?
                 </h1>
             </div>
         </div>
     </section>
+    <a href="{{url_for('logout')}}">Выйти из аккаунта</a>
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-4 is-4">
+                <div class="column is-offset-7 is-4">
                     <form method="POST">
                         <div class="field has-addons">
                             <div class="control is-expanded">
-                                <input class="input" name="city" type="text" placeholder="City Name">
+                                <input class="input" name="city" type="text" placeholder="Введите имя города">
                             </div>
                             <div class="control">
                                 <button class="button is-info">
@@ -54,7 +56,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-4 is-4">
+                <div class="column is-offset-7 is-4">
                     {% for weather in weather_data %}
                     <div class="box">
                         <article class="media">
@@ -68,15 +70,10 @@
                                     <p>
                                         <span class="title">{{ weather.city }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather.temperature }}° F</span>
+                                        <span class="subtitle">{{ weather.temperature }}° C</span>
                                         <br> {{ weather.description }}
                                     </p>
                                 </div>
-                            </div>
-                            <div class="media-right">
-                                <a href="{{ url_for('delete_city', name=weather.city) }}">
-                                    <button class="delete"></button>
-                                </a>
                             </div>
                         </article>
                     </div>

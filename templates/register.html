@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>Регистрация</title>
 </head>
 
 <body>
-    <h1>Register Page</h1>
+    <h1>Регистрация</h1>
 
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -18,7 +20,7 @@
         {{ form.submit }}
     </form>
 
-    <a href="{{ url_for('login') }}">Already have an account? Log In</a>
+    <a href="{{ url_for('login') }}">Уже есть аккаунт? Войти здесь.</a>
 </body>
 
 </html>
